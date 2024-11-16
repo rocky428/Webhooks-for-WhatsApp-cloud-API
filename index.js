@@ -41,7 +41,7 @@ app.post("/send-manual", (req, res) => {
 
     axios({
         method: "POST",
-        url: `https://graph.facebook.com/v13.0/${phone_number_id}/messages?access_token=${token}`,
+        url: `https://graph.facebook.com/v20.0/${phone_number_id}/messages?access_token=${token}`,
         data: {
             messaging_product: "whatsapp",
             to: phone,
