@@ -52,7 +52,21 @@ app.post("/webhook",(req,res)=>{ //i want some
                console.log("from "+from);
                console.log("boady param "+msg_body);
 
-               
+               axios({
+                   method:"POST",
+                   url:"https://graph.facebook.com/v13.0/"+phon_no_id+"/messages?access_token="+token,
+                   data:{
+                       messaging_product:"whatsapp",
+                       to:from,
+                       text:{
+                           body:"Hi.. I'm Prasath, your message is "+msg_body
+                       }
+                   },
+                   headers:{
+                       "Content-Type":"application/json"
+                   }
+
+               });
 
                res.sendStatus(200);
             }else{
@@ -61,6 +75,10 @@ app.post("/webhook",(req,res)=>{ //i want some
 
     }
 
+});
+
+app.get("/",(req,res)=>{
+    res.status(200).send("hello this is webhook setup");
 });
 
 app.get("/",(req,res)=>{
